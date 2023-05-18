@@ -29,23 +29,35 @@ erDiagram
         Habilidad }|--|| Futbolista : ""
         Jugador }|--|| Futbolista : ""
 
-    
+   
     Jugador{
         TINYINT     idJugador  PK
         VARCHAR(45) nombre
         VARCHAR(45) apellido
         VARCHAR(15) nombreDeUsuario
-        TINYINT     contrasena
+        CHAR(64)    contrasena
         MEDIUMINT   monedas
     }
 
-    Transferencia(
-        TINYINT idTransferencia PK
-        Datetime FechaHora
-        
+    Posesion{
+        TINYINT idJugador
+        TINYINT idFutbolista
+        BOOL    adquirido
+    }
+    Jugador }|--|| Posesion : ""
+    Futbolista }|--|| Posesion : ""
+    
+    
 
-    )
-
+    Transferencia{
+        TINYINT     idTransferencia PK
+        TINYINT     idFutbolista FK
+        Datetime    fechaHora
+        MEDIUMINT   precio
+        MEDIUMINT   monedas
+        Date     fechaConcretacion 
+    }
+        Jugador }|--|| Transferencia : ""
     
 
 ```
