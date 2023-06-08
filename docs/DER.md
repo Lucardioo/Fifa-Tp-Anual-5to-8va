@@ -27,7 +27,7 @@ erDiagram
     }
         Posicion }|--|| Futbolista : "" 
         Habilidad }|--|| Futbolista : ""
-        Jugador }|--|| Futbolista : ""
+        
 
    
     Jugador{
@@ -40,8 +40,8 @@ erDiagram
     }
 
     Posesion{
-        TINYINT idJugador
-        TINYINT idFutbolista
+        TINYINT idJugador   PK,FK
+        TINYINT idFutbolista  PK,FK
         BOOL    adquirido
     }
     Jugador }|--|| Posesion : ""
@@ -58,7 +58,7 @@ erDiagram
         Date     fechaConcretacion 
     }
         Jugador }|--|| Transferencia : ""
-    
+        Futbolista }|--|| Transferencia : ""
 
 ```
 
