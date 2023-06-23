@@ -1,14 +1,13 @@
 -- CREAR UNA TABLA EN MEDIO DE FUTBOLISTA Y HABILIDADES PARA ROMPER EL "MUCHOS A MUCHOS", LA TABLA DEL MUCHOS A MNUCHOS SE COMPONE POR LAS CLAVES PRIMARIAS DE LAS TABLAS A RELACIONAR (idFutbolista-idHabilidad) A SU VEZ AMBAS FORMAN UNA "CLAVE PRIMARIA COMPUESTA". CADA UNO DE LOS ATRIBUTOS ES UNA FK HACIA SU CORRESPONDIENTE TABLA.
 
-
 -- SACAR NUMERO EN POSCION Y IDJUGADOR EN FUTBOLISTAS
+
 ```mermaid
 erDiagram
 
     Posicion{
         TINYINT     idPosicion PK,FK
-        VARCHAR(45) nombre       
-        TINYINT     numero      
+        VARCHAR(45) nombre     
     }
 
     Habilidad{
@@ -16,11 +15,14 @@ erDiagram
         VARCHAR(45) descripcion
     }
 
+    Futbolista-Habilidad{
+        TINYINT 
+    }
+
     Futbolista{
         TINYINT     idFutbolista  PK
         TINYINT     idPosicion      FK
         TINYINT     idHabilidades   FK
-        TINYINT     idJugador       Fk
         VARCHAR(45) nombre 
         VARCHAR(45) apellido            
         DATE        fechaDeNacimiento    
