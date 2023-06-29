@@ -1,6 +1,6 @@
 -- CREAR UNA TABLA EN MEDIO DE FUTBOLISTA Y HABILIDADES PARA ROMPER EL "MUCHOS A MUCHOS", LA TABLA DEL MUCHOS A MNUCHOS SE COMPONE POR LAS CLAVES PRIMARIAS DE LAS TABLAS A RELACIONAR (idFutbolista-idHabilidad) A SU VEZ AMBAS FORMAN UNA "CLAVE PRIMARIA COMPUESTA". CADA UNO DE LOS ATRIBUTOS ES UNA FK HACIA SU CORRESPONDIENTE TABLA.
 
--- SACAR NUMERO EN POSCION Y IDJUGADOR EN FUTBOLISTAS
+-- SACAR NUMERO EN POSCION Y IDJUGADOR EN FUTBOLISTAS ( HECHO )
 
 ```mermaid
 erDiagram
@@ -16,13 +16,15 @@ erDiagram
     }
 
     Futbolista-Habilidad{
-        TINYINT 
+        TINYINT     idFutbolista PK, FK
+        TINYINT     idHabilidad PK, FK
     }
+         Futbolista-Habilidad }|--|| Habilidad : ""
+        Futbolista-Habilidad }|--|| Futbolista : ""
 
     Futbolista{
         TINYINT     idFutbolista  PK
         TINYINT     idPosicion      FK
-        TINYINT     idHabilidades   FK
         VARCHAR(45) nombre 
         VARCHAR(45) apellido            
         DATE        fechaDeNacimiento    
@@ -31,8 +33,8 @@ erDiagram
         INT         pase                 
         INT         defensa              
     }
-        Posicion }|--|| Futbolista : "" 
-        Habilidad }|--|| Futbolista : ""
+        Futbolista }|--|| Posicion  : "" 
+       
         
 
    
@@ -46,12 +48,12 @@ erDiagram
     }
 
     Posesion{
-        TINYINT idJugador   PK,FK
-        TINYINT idFutbolista  PK,FK
-        BOOL    adquirido
+        TINYINT     idJugador   PK,FK
+        TINYINT     idFutbolista  PK,FK
+        BOOL        adquirido
     }
-    Jugador }|--|| Posesion : ""
-    Futbolista }|--|| Posesion : ""
+    Posesion }|--|| Jugador  : ""
+    Posesion }|--|| Futbolista : ""
     
     
 
@@ -63,15 +65,15 @@ erDiagram
         MEDIUMINT   monedas
         Date     fechaConcretacion 
     }
-        Jugador }|--|| Transferencia : ""
-        Futbolista }|--|| Transferencia : ""
+        Transferencia}|--|| Jugador : ""
+        Transferencia }|--|| Futbolista : ""
 
 ```
 
 
 - Nombre de las posiciones dentro de la cancha.
 
-- Nombre de las habilidades y una descripción (no más de 45        caracteres).
+- Nombre de las habilidades y una descripción (no más de 45 caracteres).
 
 - De los futbolistas importa conocer nombre, apellido, fecha de nacimiento, velocidad, remate, pase, defensa (valores enteros entre 1 y 100). Cada jugador tiene una posición en la cancha y puede tener múltiples habilidades (o ninguna).
 
