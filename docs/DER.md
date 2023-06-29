@@ -7,7 +7,7 @@ erDiagram
     }
 
     Habilidad{
-        TINYINT     idHabilidades PK,FK
+        TINYINT     idHabilidad PK,FK
         VARCHAR(45) descripcion
     }
 

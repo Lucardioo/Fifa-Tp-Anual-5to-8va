@@ -6,31 +6,30 @@ USE FIFA-TRANSACCIONES;
 
 CREATE TABLE Posicion -- no tiene uniones
 (
-    idPosicion          TINYINT     NOT NULL,
-    nombre              VARCHAR(45) NOT NULL,
-    PRIMARY KEY (idPosicion)
+    idPosicion          TINYINT PRIMARY KEY NOT NULL,
+    nombre              VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE Habilidad -- no tiene uniones
 (
-    idHabilidad       TINYINT     NOT NULL,
+    idHabilidad         TINYINT PRIMARY KEY NOT NULL,
     descripcion         VARCHAR(45) NOT NULL,
-    PRIMARY KEY (idhabilidad)
-    constraint idhabilidad Foreign Key (idhabilidad) REFERENCES Futbolista-Habilidad (idhabilidad)
+    
+    PRIMARY KEY (idHabilidad)
+    CONSTRAINT idHabilidad FOREIGN KEY (idHabilidad) REFERENCES Futbolista-Habilidad (idHabilidad)
 
 );
 
 CREATE TABLE Futbolista-Habilidad
 (
-    idFutbolista        TINYINT NOT NULL,
-    idHabilidad         TINYINT NOT NULL
+    idFutbolista        TINYINT PRIMARY KEY NOT NULL,
+    idHabilidad         TINYINT PRIMARY KEY NOT NULL
 
-    PRIMARY KEY (idFutbolista, idHabilidad)
 );
 CREATE TABLE Futbolista
 (
-    idFutbolista        TINYINT NOT NULL,
-    idPosicion          TINYINT NOT NULL,
+    idFutbolista        TINYINT PRIMARY KEY NOT NOT NULL,
+    idPosicion          TINYINT PRIMARY KEY NOT NOT NULL,
     nombre              VARCHAR(45),
     apellido            VARCHAR(45),
     fechaDeNacimiento   DATE    NOT NULL,
@@ -40,7 +39,7 @@ CREATE TABLE Futbolista
     defensa             INT     NOT NULL,
 
     PRIMARY KEY (idFutbolista)
-    CONSTRAINT idFutbolista FOREIGN KEY (idfutbolista) REFERENCES idfutbolista (Futbolista-Habilidad)
+    CONSTRAINT idFutbolista FOREIGN KEY (idfutbolista) REFERENCES Futbolista-Habilidad (idfutbolista)
 );
 
 CREATE TABLE Jugador --falta las uniones
@@ -60,9 +59,7 @@ CREATE TABLE Posesion
 (
     idJugador           TINYINT NOT NULL,
     idFutbolista        TINYINT NOT NULL,
-    adquirido           BOOLEAN NOT NULL,
-
-    PRIMARY KEY (idJugador, IdFutbolista)
+    adquirido           BOOLEAN NOT NULL
 );
 
 CREATE TABLE Transferencia
@@ -72,7 +69,5 @@ CREATE TABLE Transferencia
     fechaHora           DATETIME    NOT NULL,
     precio              MEDIUMINT   NOT NULL,
     monedas             MEDIUMINT   NOT NULL,
-    fechaConcentracion  DATE        NOT NULL,
-
-    PRIMARY KEY (idTransferencia)
+    fechaConcentracion  DATE        NOT NULL
 );
