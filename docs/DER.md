@@ -3,12 +3,12 @@ erDiagram
 
     Posicion{
         TINYINT     idPosicion PK,FK
-        VARCHAR(45) nombre     
+        VARCHAR(45) nombre UK     
     }
 
     Habilidad{
         TINYINT     idHabilidad PK,FK
-        VARCHAR(45) descripcion
+        VARCHAR(45) descripcion UK
     }
 
     Futbolista-Habilidad{
@@ -38,7 +38,7 @@ erDiagram
         TINYINT     idJugador  PK
         VARCHAR(45) nombre
         VARCHAR(45) apellido
-        VARCHAR(15) nombreDeUsuario
+        VARCHAR(15) nombreDeUsuario UK
         CHAR(64)    contrasena
         MEDIUMINT   monedas
     }
