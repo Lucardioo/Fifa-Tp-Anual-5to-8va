@@ -1,31 +1,34 @@
+--escribir las relaciones a lo ultimo
+
+
 DROP DATABASE IF EXISTS FIFA-TRANSACCIONES;
 
 CREATE DATABASE FIFA-TRANSACCIONES;
 
 USE FIFA-TRANSACCIONES;
 
-CREATE TABLE Posicion -- no tiene uniones
+CREATE TABLE Posicion
 (
     idPosicion          TINYINT PRIMARY KEY NOT NULL,
     nombre              VARCHAR(45) NOT NULL
 );
 
-CREATE TABLE Habilidad -- no tiene uniones
+CREATE TABLE Habilidad
 (
     idHabilidad         TINYINT PRIMARY KEY NOT NULL,
-    descripcion         VARCHAR(45) NOT NULL,
-    
-    PRIMARY KEY (idHabilidad)
-    CONSTRAINT idHabilidad FOREIGN KEY (idHabilidad) REFERENCES Futbolista-Habilidad (idHabilidad)
-
+    descripcion         VARCHAR(45) NOT NULL
 );
 
-CREATE TABLE Futbolista-Habilidad
+CREATE TABLE Futbolista_Habilidad
 (
-    idFutbolista        TINYINT PRIMARY KEY NOT NULL,
-    idHabilidad         TINYINT PRIMARY KEY NOT NULL
-
+    idFutbolista        TINYINT NOT NULL,
+    idHabilidad         TINYINT NOT NULL,
+    
+    PRIMARY KEY (idHabilidad, idFutbolista),
+    CONSTRAINT Fk_Habilidad FOREIGN KEY (idHabilidad) REFERENCES Habilidad (idHabilidad),
+    CONSTRAINT Fk_Futbolista FOREIGN KEY (idFutbolista) REFERENCES Futbolista (idFutbolista)
 );
+
 CREATE TABLE Futbolista
 (
     idFutbolista        TINYINT PRIMARY KEY NOT NOT NULL,
