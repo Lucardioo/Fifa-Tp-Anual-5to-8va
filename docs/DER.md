@@ -2,8 +2,8 @@
 erDiagram
 
     Posicion{
-        TINYINT     idPosicion PK,FK
-        VARCHAR(45) nombre UK     
+        TINYINT     idPosicion  PK,FK
+        VARCHAR(45) nombre      UK     
     }
 
     Habilidad{
@@ -12,14 +12,14 @@ erDiagram
     }
 
     Futbolista-Habilidad{
-        TINYINT     idFutbolista PK, FK
-        TINYINT     idHabilidad PK, FK
+        TINYINT     idFutbolista    PK, FK
+        TINYINT     idHabilidad     PK, FK
     }
          Futbolista-Habilidad }|--|| Habilidad : ""
         Futbolista-Habilidad }|--|| Futbolista : ""
 
     Futbolista{
-        TINYINT     idFutbolista  PK
+        TINYINT     idFutbolista    PK
         TINYINT     idPosicion      FK
         VARCHAR(45) nombre 
         VARCHAR(45) apellido            
@@ -35,7 +35,7 @@ erDiagram
 
    
     Jugador{
-        TINYINT     idJugador  PK
+        TINYINT     idJugador       PK
         VARCHAR(45) nombre
         VARCHAR(45) apellido
         VARCHAR(15) nombreDeUsuario UK
@@ -44,8 +44,8 @@ erDiagram
     }
 
     Posesion{
-        TINYINT     idJugador   PK,FK
-        TINYINT     idFutbolista  PK,FK
+        TINYINT     idJugador       PK,FK
+        TINYINT     idFutbolista    PK,FK
         BOOL        adquirido
     }
     Posesion }|--|| Jugador  : ""
@@ -55,7 +55,7 @@ erDiagram
 
     Transferencia{
         TINYINT     idTransferencia PK
-        TINYINT     idFutbolista FK
+        TINYINT     idFutbolista    FK
         Datetime    fechaHora
         MEDIUMINT   precio
         MEDIUMINT   monedas
@@ -78,5 +78,3 @@ erDiagram
 - Posesión de futbolistas por jugadores (un jugador puede tener muchos futbolistas y el mismo futbolista puede pertenecer a varios jugadores).
 
 - De las transferencias importa conocer fecha y hora de publicación, jugador que ofrece un futbolista y precio en monedas. Cuando la transferencia es exitosa se termina de asignar fecha y hora transferencia y jugador comprador.
--Posesión de futbolistas por jugadores (un jugador puede tener muchos futbolistas y el mismo futbolista puede pertenecer a varios jugadores).
-De las transferencias importa conocer fecha y hora de publicación, jugador que ofrece un futbolista y precio en monedas. Cuando la transferencia es exitosa se termina de asignar fecha y hora transferencia y jugador comprador.
