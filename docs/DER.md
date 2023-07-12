@@ -56,6 +56,7 @@ erDiagram
     Transferencia{
         TINYINT     idTransferencia PK
         TINYINT     idFutbolista    FK
+        TINYINT     idJugador       FK
         Datetime    fechaHora
         MEDIUMINT   precio
         MEDIUMINT   monedas

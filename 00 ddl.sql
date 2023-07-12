@@ -17,11 +17,7 @@ CREATE TABLE Futbolista
     velocidad           INT     NOT NULL,
     remate              INT     NOT NULL,
     pase                INT     NOT NULL,
-    defensa             INT     NOT NULL,
-
-    PRIMARY KEY (idPosicion)
-    CONSTRAINT FK_idPosicion FOREIGN KEY (idPosicion)
-    REFERENCES Posicion (idPosicion)
+    defensa             INT     NOT NULL
 );
 
 CREATE TABLE Habilidad
@@ -64,7 +60,10 @@ CREATE TABLE Transferencia
 
     PRIMARY KEY (idTransferencia, idFutbolista),
 
-    CONSTRAINT FK_idFutbolista FOREIGN KEY (idFutbolista)
+    CONSTRAINT FK_idFutbolista FOREIGN KEY (idJugador)
+    REFERENCES Jugador (idJugador)
+
+    CONSTRAINT FK_idJugador FOREIGN KEY (idFutbolista)
     REFERENCES Futbolista (idFutbolista)
 );
 CREATE TABLE Futbolista_Habilidad
